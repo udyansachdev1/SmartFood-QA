@@ -76,12 +76,15 @@ async fn chat_handler(req: Request<Body>) -> Result<Response<Body>, Infallible> 
             match infer(chat_request.prompt) {
                 Ok(inference_result) => {
                     // Prepare the response message
-                    let response_message = format!("Inference result: {}", inference_result);
+                    let response_message = format!("{}", inference_result);
                     let chat_response = ChatResponse {
                         response: response_message,
                     };
                     // Serialize the response and send it back
-                    let response = Response::new(Body::from(serde_json::to_string(&chat_response).unwrap()));
+                    let response = Response::builder()
+                        .status(200) // Set status code to 200
+                        .body(Body::from(serde_json::to_string(&chat_response).unwrap()))
+                        .unwrap();
                     Ok(response)
                 }
 
@@ -105,6 +108,7 @@ async fn chat_handler(req: Request<Body>) -> Result<Response<Body>, Infallible> 
     }
 }
 
+
 async fn router(req: Request<Body>) -> Result<Response<Body>, Infallible> {
     match (req.uri().path(), req.method()) {
         ("/api/chat", &hyper::Method::POST) => chat_handler(req).await,
@@ -123,7 +127,7 @@ fn not_found() -> Result<Response<Body>, Infallible> {
 #[tokio::main]
 async fn main() {
     println!("Server listening on port 8501...");
-    let addr = SocketAddr::from(([0, 0, 0, 0], 8502));
+    let addr = SocketAddr::from(([0, 0, 0, 0], 8503));
     let make_svc = make_service_fn(|_conn| {
         async { Ok::<_, Infallible>(service_fn(router)) }
     });
