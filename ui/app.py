@@ -61,7 +61,7 @@ if uploaded_file is not None:
 
     # Load pre-trained models
     model_label = load_model(
-        "/Users/udyansachdev/Downloads/ML_Final/InceptionV3/Label Prediction Model/bestmodel.keras",
+        "../bestmodel.keras",
         compile=False,
     )
     processed_image = load_and_preprocess_image(uploaded_file, (299, 299))
