@@ -17,7 +17,7 @@ struct ChatResponse {
 fn infer(prompt: String) -> Result<String, Box<dyn std::error::Error>> {
     let tokenizer_source = llm::TokenizerSource::Embedded;
     let model_architecture = llm::ModelArchitecture::Llama;
-    let model_path = PathBuf::from("/Users/udyansachdev/Documents/Cloud_Computing/Final_Project/open_llama_3b-f16.bin");
+    let model_path = PathBuf::from("rust_api/src/open_llama_3b-f16.bin");
     let prompt = prompt.to_string();
     let now = std::time::Instant::now();
     let model = llm::load_dynamic(
