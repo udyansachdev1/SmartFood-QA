@@ -42,8 +42,21 @@ Once you have accessed the app using the link provided above, you can follow the
 
 ## App Development and Architecture
 
+The app has three main components; The front-end, identification of the food item in the image and the query answering using the Meta Llama model. 
+![Architecture](resources/cf_app_architecture.png)
 
+### Frontend
+The user interface is built using Streamlit, a Python library that allows for rapid prototyping and deployment of data applications. This abstracts away the complexity of developing a web application and allows for quick development and deployment and works well with python.
 
+### Food Item Identification
+The first task of the app is to identify the food item which is present in the image so that this information can be passed on to the LLM to give it more context. For this task, we used our own model which we made for another project, for additional information on the model and how it was trained, please refer to the [model repository](https://github.com/nogibjj/ML_Final). The model was trained to identify only 11 classes of food items since this was for demonstration purpose and it helps in keeping the size of the model relatively small.
+
+When the image link is passed by the user, the python backend downloads the image and performs pre-processing operations on it so that it can be passed to the model. The model then predicts the class of the food item which is shown to the user and stored in the backend for further use.
+
+### Question and Answer
+Once the food item is identified, the user can ask questions about the food item, the python takes in this query and combines it with the earlier odentified food item and passes it to the Rust application. 
+
+In the rust application, further processing of the text is performed, 
 ## CI/CD Pipeline
 
 ## App Deployment
