@@ -207,14 +207,14 @@ else:
     st.sidebar.warning("Please enter an image URL.")
 
 # Title for user prompt
-st.header("What do you want to know about the dish?")
+st.header("What would you like to know about the dish?")
 
 # Input prompt from the user
-prompt = st.text_area("Enter your prompt:")
+prompt = st.text_area("Enter your Query:")
 result_display = st.empty()  # Empty container to display the result
 
 # Submit button to generate response
-if st.button("Generate Response"):
+if st.button("Submit"):
     if not prompt:
         st.warning("Please enter a prompt.")
     elif "predicted_class_name" not in globals():
@@ -223,7 +223,7 @@ if st.button("Generate Response"):
         try:
             with st.spinner("Generating response..."):
                 # Combine the user's prompt with the predicted dish label
-                prompt_with_dish = f"Dish: {food_subset_dict[predicted_class_name]}, Question: {prompt}"
+                prompt_with_dish = f"Dish: {food_subset_dict[predicted_class_name]}, Question: {prompt}?"
                 # Make a POST request to the Rust API
                 response = requests.post(API_URL, json={"inputs": prompt_with_dish})
                 if response.status_code == 200:
