@@ -223,12 +223,13 @@ if st.button("Submit"):
         try:
             with st.spinner("Generating response..."):
                 # Combine the user's prompt with the predicted dish label
-                prompt_with_dish = f"Dish: {food_subset_dict[predicted_class_name]}, Question: {prompt}?"
+                prompt_with_dish = f"The dish is {food_subset_dict[predicted_class_name]}. Can you provide the following information about this specific dish? {prompt}."
                 # Make a POST request to the Rust API
                 response = requests.post(API_URL, json={"inputs": prompt_with_dish})
                 if response.status_code == 200:
                     result = response.json()  # .get("generated_response")
                     generated_text = result[0]["generated_text"]
+                    generated_text = generated_text.replace(prompt_with_dish, "")
                     result_display.success(f"{generated_text}")
                 else:
                     result_display.error("Error: Failed to generate a response.")

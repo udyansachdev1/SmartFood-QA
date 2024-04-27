@@ -42,11 +42,33 @@ Demo Video - [Link]()
     - The app will use Huggingface's Llama LLM Model to generate and display a response to your query.
 
 Below are a few sample image URLs to get you started with the app:
-    - Tiramisu: [https://food.fnr.sndimg.com/content/dam/images/food/fullset/2011/2/4/2/RX-FNM_030111-Sugar-Fix-005_s4x3.jpg.rend.hgtvcom.1280.960.suffix/1371597326801.jpeg](https://food.fnr.sndimg.com/content/dam/images/food/fullset/2011/2/4/2/RX-FNM_030111-Sugar-Fix-005_s4x3.jpg.rend.hgtvcom.1280.960.suffix/1371597326801.jpeg)
-    - Hot Dog: [https://img.freepik.com/free-photo/classic-hot-dog-with-ketchup-mustard-sauce-isolated-white-background_123827-29747.jpg?size=626&ext=jpg&ga=GA1.1.1395880969.1710028800&semt=ais](https://img.freepik.com/free-photo/classic-hot-dog-with-ketchup-mustard-sauce-isolated-white-background_123827-29747.jpg?size=626&ext=jpg&ga=GA1.1.1395880969.1710028800&semt=ais)
-    - Carrot Cake: [https://bakerjo.co.uk/wp-content/uploads/2022/08/IMG_3525.jpg](https://bakerjo.co.uk/wp-content/uploads/2022/08/IMG_3525.jpg)
+
+    -   Tiramisu: [https://food.fnr.sndimg.com/content/dam/images/food/fullset/2011/2/4/2/RX-FNM_030111-Sugar-Fix-005_s4x3.jpg.rend.hgtvcom.1280.960.suffix/1371597326801.jpeg](https://food.fnr.sndimg.com/content/dam/images/food/fullset/2011/2/4/2/RX-FNM_030111-Sugar-Fix-005_s4x3.jpg.rend.hgtvcom.1280.960.suffix/1371597326801.jpeg)
+
+    -   Hot Dog: [https://img.freepik.com/free-photo/classic-hot-dog-with-ketchup-mustard-sauce-isolated-white-background_123827-29747.jpg?size=626&ext=jpg&ga=GA1.1.1395880969.1710028800&semt=ais](https://img.freepik.com/free-photo/classic-hot-dog-with-ketchup-mustard-sauce-isolated-white-background_123827-29747.jpg?size=626&ext=jpg&ga=GA1.1.1395880969.1710028800&semt=ais)
+
+    -   Carrot Cake: [https://bakerjo.co.uk/wp-content/uploads/2022/08/IMG_3525.jpg](https://bakerjo.co.uk/wp-content/uploads/2022/08/IMG_3525.jpg)
 
 ## App Development and Architecture
+
+This web application is a blend of Python, Rust, and AWS services, designed to provide a seamless user experience in food item identification and information generation.
+
+**Frontend**: The user interface is built using Streamlit, a Python library that allows for rapid prototyping and deployment of data applications.
+
+**Backend**: The backend consists of two main components:
+1. **Food Item Identification**: Utilizes a pre-trained machine learning model to identify food items from provided image URLs.
+2. **Information Generation**: Once the food item is identified, Hugging Face's Llama Language Model (LLM) is used to generate answers to user queries about the identified food item. This component is implemented in Rust, showcasing the interoperability of different programming languages in the architecture.
+
+**Containerization and Deployment**: The entire application is containerized using Docker, which ensures consistency across different execution environments. The Docker image is stored in Amazon Elastic Container Registry (ECR).
+
+**AWS Services**: Several AWS services were leveraged for hosting and orchestration:
+- **AWS Fargate**: A serverless compute engine for containers. It works with Amazon Elastic Container Service (ECS) to provide a seamless and scalable deployment platform.
+- **Amazon ECS**: Used for container orchestration.
+- **Amazon EC2**: Hosts the web server and manages load balancing to ensure optimal performance.
+
+**Security and Target Groups**: AWS security groups control inbound and outbound traffic to the resources. Target groups are used to route requests to one or more registered targets, increasing the efficiency and reliability of the application.
+
+**CI/CD Pipeline**: The codebase is hosted on GitHub. A CI/CD pipeline triggers an automatic refresh of the AWS-hosted web app whenever changes are committed to any of the code files (.rs, .py, .ipynb). This ensures that the application is always up-to-date with the latest changes and improvements.
 
 ## CI/CD Pipeline
 
@@ -55,3 +77,7 @@ Below are a few sample image URLs to get you started with the app:
 ## Monitoring and Logging
 
 ## Team Members
+    -   Udyan Sachdev (us26)
+    -   Revanth Chowdary Ganga (rg361)
+    -   Faraz Jawed (fj49)
+    -   Divya Sharma (ds655)
