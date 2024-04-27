@@ -136,6 +136,20 @@ food_subset = [
     "hot_dog",
     "steak",
 ]
+
+food_subset_dict = {
+    "tiramisu": "Tiramisu",
+    "tuna_tartare": "Tuna Tartare",
+    "beet_salad": "Beet Salad",
+    "fish_and_chips": "Fish and Chips",
+    "pancakes": "Pancakes",
+    "caesar_salad": "Caesar Salad",
+    "garlic_bread": "Garlic Bread",
+    "carrot_cake": "Carrot Cake",
+    "chocolate_mousse": "Chocolate Mousse",
+    "hot_dog": "Hot Dog",
+    "steak": "Steak",
+}
 food_subset.sort()
 
 
@@ -159,7 +173,10 @@ st.title("Dish Classifier and Recipe Assistant")
 
 # Upload image URL
 image_url = st.sidebar.text_input("Image URL")
-
+st.sidebar.markdown(
+    "Please enter an image URL of one of the following items:\n- Tiramisu\n- Tuna Tartare\n- Beet Salad\n- Fish and Chips\n- Pancakes\n- Caesar Salad\n- Garlic Bread\n- Carrot Cake\n- Chocolate Mousse\n- Hot Dog\n- Steak",
+    unsafe_allow_html=True,
+)
 # Define columns for layout
 col1, col2, col3 = st.columns(3)
 
@@ -181,7 +198,7 @@ if image_url:
 
             # Display the predicted label
             col3.write("#### Predicted Dish:")
-            col3.write(predicted_class_name)
+            col3.write(food_subset_dict[predicted_class_name])
         else:
             st.sidebar.error("Error: Failed to download the image.")
     except Exception as e:
@@ -206,7 +223,7 @@ if st.button("Generate Response"):
         try:
             with st.spinner("Generating response..."):
                 # Combine the user's prompt with the predicted dish label
-                prompt_with_dish = f"{prompt} {predicted_class_name}"
+                prompt_with_dish = f"Dish: {food_subset_dict[predicted_class_name]}, Question: {prompt}"
                 # Make a POST request to the Rust API
                 response = requests.post(API_URL, json={"inputs": prompt_with_dish})
                 if response.status_code == 200:
