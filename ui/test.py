@@ -16,4 +16,4 @@ output = query(
         "inputs": "How does it taste tiramisu",
     }
 )
-print(output)
+print("Response:" + output)
