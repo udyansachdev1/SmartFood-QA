@@ -1,4 +1,4 @@
-FROM --platform=linux/amd64 python:3.11-slim as base
+FROM --platform=linux/amd64 python:3.11 as base
 
 ENV PYTHONUNBUFFERED=1 \
     PYTHONDONTWRITEBYTECODE=1 \
@@ -20,7 +20,7 @@ RUN apt-get update && \
     rm -rf /var/lib/apt/lists/*
 
 #installing rust
-#RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
 
 # Set the working directory
 WORKDIR /app
@@ -32,7 +32,7 @@ COPY . /app
 RUN pip install --no-cache-dir -r ui/requirements.txt
 
 # Build the rust code
-#RUN cargo build --manifest-path rust_api/Cargo.toml  --release 
+RUN cargo build --manifest-path rust_api/Cargo.toml  --release 
 
 
 # change the working directory
@@ -41,6 +41,6 @@ WORKDIR /app
 # Expose the port
 EXPOSE 8501
 
-CMD bash start.sh
 # Run the application
-#CMD streamlit run app.py
+CMD bash start.sh
+

@@ -1,9 +1,10 @@
 use actix_web::{web, App, HttpResponse, HttpServer, Responder};
-use serde_json::{json, Value};
+use anyhow::Error;
 use reqwest;
-use anyhow::Error; // Import the Error type from the anyhow crate
+use serde_json::{json, Value}; // Import the Error type from the anyhow crate
 
-const API_URL: &str = "https://api-inference.huggingface.co/models/meta-llama/Meta-Llama-3-8B-Instruct";
+const API_URL: &str =
+    "https://api-inference.huggingface.co/models/meta-llama/Meta-Llama-3-8B-Instruct";
 const BEARER_TOKEN: &str = "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";
 
 async fn query(payload: Value) -> Result<Value, Error> {
@@ -22,7 +23,10 @@ async fn query(payload: Value) -> Result<Value, Error> {
         Ok(json_body)
     } else {
         // Convert anyhow::Error to Box<dyn std::error::Error>
-        Err(Error::from(anyhow::anyhow!("Request failed with status: {}", response.status())))
+        Err(Error::from(anyhow::anyhow!(
+            "Request failed with status: {}",
+            response.status()
+        )))
     }
 }
 
@@ -35,11 +39,8 @@ async fn handle_query(json_payload: web::Json<Value>) -> impl Responder {
 
 #[actix_web::main]
 async fn main() -> std::io::Result<()> {
-    HttpServer::new(|| {
-        App::new()
-            .route("/query", web::post().to(handle_query))
-    })
-    .bind("127.0.0.1:8080")?
-    .run()
-    .await
+    HttpServer::new(|| App::new().route("/query", web::post().to(handle_query)))
+        .bind("127.0.0.1:8080")?
+        .run()
+        .await
 }
