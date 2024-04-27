@@ -24,7 +24,7 @@ async fn query(payload: Value) -> Result<Value, Error> {
     } else {
         // Convert anyhow::Error to Box<dyn std::error::Error>
         Err(Error::from(anyhow::anyhow!(
-            "Request failed with Status: {}",
+            "Request failed with Status : {}",
             response.status()
         )))
     }
