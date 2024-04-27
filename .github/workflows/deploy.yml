@@ -4,8 +4,8 @@ on:
   push:
     branches: [ "main" ]
     paths: 
-    - "**.py"
-    - "**.rs"
+    - "**app.py"
+    - "./rust_api/main.rs"
 
 env:
   # Setting an environment variable with the value of a configuration variable
