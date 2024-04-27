@@ -13,7 +13,7 @@ def query(payload):
 
 output = query(
     {
-        "inputs": "How does it taste tiramisu",
+        "inputs": "How does it taste  tiramisu",
     }
 )
 print("Response:" + output)

@@ -21,7 +21,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
 
-      -name: Download Model
+      - name: Download Model
         run: aws s3 --no-sign-request cp s3://ids721-final/bestmodel.keras . 
 
       - name: Set up QEMU for arm64
