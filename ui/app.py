@@ -169,7 +169,7 @@ def predict_class_name(img_data):
 
 
 # Streamlit app title
-st.title("Dish Classifier and Recipe Assistant")
+st.title("Dish Classifier and Query Assistant")
 
 # Upload image URL
 image_url = st.sidebar.text_input("Image URL")
