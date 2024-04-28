@@ -51,6 +51,7 @@ The app is configured to indentify only the above mentioned food items.
 ## 2. App Architecture
 
 The app has three main components; The front-end, identification of the food item in the image and the query answering using the Meta Llama model. 
+
 ![Architecture](resources/cf_app_architecture.png)
 
 ### 2.1 Frontend
@@ -141,7 +142,7 @@ Container level metrics were enabled in the cluster and these can be viewed dire
 A custom detailed Dashboard was created in cloudwatch to monitor the status of different services and the load balancer, this dashboard can be accessed in the cloudwatch console:
 ![Cloudwatch Dashboard](resources/logs_cw.png)
 
-Am alrm was set for the response time which when triggered will send a notification to the admin, the trigger is set comparatively at a lower level so that the admins are alerted at an early stage so that they can take necessary action to prevent it from getting worse.
+An alarm was set for the response time which when triggered will send a notification to the admin, the trigger is set comparatively at a lower level so that the admins are alerted at an early stage so that they can take necessary action to prevent it from getting worse.
 ![Alarm](resources/alarm_cw.png)
 
 ## 5. CI/CD
