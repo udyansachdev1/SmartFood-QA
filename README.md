@@ -7,7 +7,7 @@ In this project we make use of a custom pre-trained model and a open-source [Met
 
 Link to App: [Link](http://cf-ecs-lb-162243208.us-east-2.elb.amazonaws.com/)
 
-please watch this [Video](youtube.com) for a brief overview and demo of the project.
+please watch this [Video](https://youtu.be/D0UjdORyhQ8) for a brief overview and demo of the project.
 
 ![App](resources/app_sample.png)
 
