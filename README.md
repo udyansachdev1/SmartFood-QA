@@ -2,7 +2,7 @@
 
 [![CI-Python](https://github.com/nogibjj/Final_Project_Cloud/actions/workflows/python.yml/badge.svg)](https://github.com/nogibjj/Final_Project_Cloud/actions/workflows/python.yml)  [![CI-Rust](https://github.com/nogibjj/Final_Project_Cloud/actions/workflows/rust.yml/badge.svg)](https://github.com/nogibjj/Final_Project_Cloud/actions/workflows/rust.yml)  [![Deploy](https://github.com/nogibjj/Final_Project_Cloud/actions/workflows/deploy.yml/badge.svg)](https://github.com/nogibjj/Final_Project_Cloud/actions/workflows/deploy.yml)
 
-## Overview
+## Overvieww
 In this project we make use of a custom pre-trained model and a open-source [Meta Llama](https://huggingface.co/meta-llama/Meta-Llama-3-8B) model to identify the food item present in the image and enable the user to ask questions about the food item. The front-end is built using [streamlit](https://streamlit.io/) and the back-end is built using [Python](https://www.python.org/) and [Rust](https://www.rust-lang.org/). The application is automatically containerized using [Docker](https://www.docker.com/) by ``Github Actions`` and deployed on [AWS](https://aws.amazon.com/) using services like ``ECR``, ``ECS``, ``S3`` and ``EC2`` (load-balancer) with auto-scaling and monitoring capabilities. 
 
 Link to App: [Link](http://cf-ecs-lb-162243208.us-east-2.elb.amazonaws.com/)
