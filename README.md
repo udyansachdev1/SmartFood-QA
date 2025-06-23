@@ -1,4 +1,4 @@
-# Cloud Final Project
+# SmartFood QA: Vision-Language System for Food Recognition and Interaction
 
 [![CI-Python](https://github.com/nogibjj/Final_Project_Cloud/actions/workflows/python.yml/badge.svg)](https://github.com/nogibjj/Final_Project_Cloud/actions/workflows/python.yml)  [![CI-Rust](https://github.com/nogibjj/Final_Project_Cloud/actions/workflows/rust.yml/badge.svg)](https://github.com/nogibjj/Final_Project_Cloud/actions/workflows/rust.yml)  [![Deploy](https://github.com/nogibjj/Final_Project_Cloud/actions/workflows/deploy.yml/badge.svg)](https://github.com/nogibjj/Final_Project_Cloud/actions/workflows/deploy.yml)
 
@@ -170,7 +170,7 @@ This workflow is triggered whenever any ``*.py`` or ``*,ipynb`` file is updated 
 
 ## 6. Team Members
 Please feel free to reach out to any of us with questions or comments
+-   [Udyan Sachdev (us26)](https://github.com/udyansachdev1)
 -   [Divya Sharma (ds655)](https://github.com/DivyaSharma0795)
 -   [Faraz Jawed (fj49)](https://github.com/farazjawedd)
 -   [Revanth Chowdary Ganga (rg361)](https://github.com/revanth7667)
--   [Udyan Sachdev (us26)](https://github.com/udyansachdev1)
